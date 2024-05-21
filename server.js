@@ -9,7 +9,7 @@ const host = process.env.HOST || "localhost";
 const favicon = path.join(__dirname, 'public', 'favicon.ico');
 
 // Array di frasi ispirazionali
-const ispiration_quotes = [
+const ispirationQuotes = [
     "Il successo &egrave; la somma di piccoli sforzi ripetuti giorno dopo giorno.",
     "Trasforma le tue ferite in saggezza.",
     "La migliore preparazione per domani &egrave; fare il tuo meglio oggi.",
@@ -18,7 +18,7 @@ const ispiration_quotes = [
 
 // Funzione che recupera una frase random dall'array delle frasi ispirazionali
 function getRandomQuote() {
-    return ispiration_quotes[Math.floor(Math.random() * ispiration_quotes.length)];
+    return ispirationQuotes[Math.floor(Math.random() * ispirationQuotes.length)];
 }
 
 const server = http.createServer((req, res) => {
