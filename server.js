@@ -49,7 +49,7 @@ const server = http.createServer((req, res) => {
     // Gestione delle richieste non trovate
     res.writeHead(404, { 'Content-Type': 'text/html' });
     res.end('<h1>404 - Page not found</h1>');
-})
+});
 
 server.listen(port, host, () => {
     console.log(`Server in ascolto su http://${host}:${port}/`);
