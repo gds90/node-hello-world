@@ -1,8 +1,12 @@
 require("dotenv").config();
 
 const http = require("http");
+const path = require("path");
+const fs = require("fs");
+
 const port = process.env.PORT || 8080;
 const host = process.env.HOST || "localhost";
+const favicon = path.join(__dirname, 'public', 'favicon.ico');
 
 // Array di frasi ispirazionali
 const ispiration_quotes = [
@@ -21,8 +25,15 @@ const server = http.createServer((req, res) => {
     console.log(`${req.method} | ${req.url} effettuata`);
 
     if (req.url === '/favicon.ico') {
-        res.writeHead(404);
-        res.end();
+        fs.readFile(favicon, (err, data) => {
+            if (err) {
+                res.writeHead(404)
+                res.end();
+                return;
+            }
+            res.writeHead(200, { 'Content-Type': 'image/*' });
+            res.end(data);
+        });
         return;
     }
 
